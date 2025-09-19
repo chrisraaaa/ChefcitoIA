@@ -1,4 +1,4 @@
-/* Reset y fuente */
+/* ==================== RESET Y FUENTES ==================== */
 * {
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;
@@ -21,7 +21,7 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Header */
+/* ==================== HEADER ==================== */
 header {
   display: flex;
   align-items: center;
@@ -33,7 +33,7 @@ header {
 }
 header img { height: 60%; }
 
-/* Banner */
+/* ==================== BANNER ==================== */
 .banner {
   height: 12%;
   display: flex;
@@ -46,7 +46,7 @@ header img { height: 60%; }
   text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
 }
 
-/* Tips */
+/* ==================== TIPS ==================== */
 .sobre {
   height: 25%;
   display: flex;
@@ -64,7 +64,7 @@ header img { height: 60%; }
   font-weight: 700;
   color: #5a3e36;
   width: 22%;
-  min-height: 100px; /* antes era height fijo: ahora min */
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,7 +76,7 @@ header img { height: 60%; }
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
-/* Carrusel */
+/* ==================== CARRUSEL ==================== */
 .carrusel {
   height: calc(100vh - 25% - 25% - 80px - 20px);
   display: flex;
@@ -100,6 +100,7 @@ header img { height: 60%; }
   100% { transform: translateX(-50%); }
 }
 
+/* ==================== DIALOGFLOW MESSENGER ==================== */
 df-messenger {
   --df-messenger-bot-message: #e07b39;
   --df-messenger-user-message: #f7d9b9;
@@ -107,12 +108,11 @@ df-messenger {
   --df-messenger-chat-background-color: #fff5ec;
 }
 
-
-/* Contenedor bolita + label */
+/* ==================== CHAT BOTÓN ==================== */
 .chat-button-container {
   position: fixed;
   bottom: 20px;
-  right: 97px; /* valor por defecto para desktop */
+  right: 97px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -124,18 +124,14 @@ df-messenger {
   border-radius: 100px;
   text-align: center;
   cursor: pointer;
-  user-select: none; /* evita seleccionar texto */
+  user-select: none;
   transition: right 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
 }
-
-/* Ocultado (clase que maneja el JS) */
 .chat-button-container.oculto {
   opacity: 0;
   pointer-events: none;
   transform: translateY(8px);
 }
-
-/* Bolita visual (si la usas) */
 .chat-circle {
   width: 60px;
   height: 60px;
@@ -143,8 +139,6 @@ df-messenger {
   border-radius: 50%;
   flex-shrink: 0;
 }
-
-/* Texto label rainbow y fondo blanco */
 .chat-text {
   font-size: 1.6rem;
   font-weight: 700;
@@ -159,12 +153,10 @@ df-messenger {
   background-color: #fff;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* si no cabe se corta con "..." */
-  max-width: 420px; /* evita que se vuelva gigante */
+  text-overflow: ellipsis;
+  max-width: 420px;
   user-select: none;
 }
-
-/* Animación rainbow */
 @keyframes rainbow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -177,29 +169,13 @@ df-messenger {
   height: 60px;
 }
 
-
 /* ==================== RESPONSIVE ==================== */
-
-/* Tablets (pantallas medianas) */
 @media (max-width: 1024px) {
-  .banner h2 {
-    font-size: 2.5rem;
-    text-align: center;
-  }
-
-  .tip {
-    font-size: 1.2rem;
-    width: 40%;
-    min-height: auto;
-  }
-
-  .carrusel img {
-    width: 600px;
-    height: 350px;
-  }
+  .banner h2 { font-size: 2.5rem; text-align: center; }
+  .tip { font-size: 1.2rem; width: 40%; min-height: auto; }
+  .carrusel img { width: 600px; height: 350px; }
 }
 
-/* Celulares grandes (pantallas pequeñas) */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -209,86 +185,41 @@ df-messenger {
     padding: 1rem;
     gap: 10px;
   }
-  header img {
-    height: 50px;
-  }
-  header h1 {
-    font-size: 1.8rem;
-  }
+  header img { height: 50px; }
+  header h1 { font-size: 1.8rem; }
 
-  .banner h2 {
-    font-size: 2rem;
-    padding: 0 1rem;
-  }
+  .banner h2 { font-size: 2rem; padding: 0 1rem; }
 
   .sobre {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* hace que los hijos tengan la misma altura */
+    align-items: stretch;
     gap: 15px;
     padding: 0 1rem;
-    flex-wrap: wrap; /* permite que bajen en pantallas chicas */
-    height: auto; /* importante: dejar altura automática en móvil */
+    flex-wrap: wrap;
+    height: auto;
   }
+  .tip { flex: 1 1 45%; min-width: 140px; height: auto !important; font-size: 1rem; padding: 0.8rem; }
 
-  .tip {
-    flex: 1 1 45%; /* cada tip ocupa casi la mitad */
-    min-width: 140px;
-    height: auto !important;
-    font-size: 1rem;
-    padding: 0.8rem;
-  }
-
-  .carrusel img {
-    width: 400px;
-    height: 250px;
-  }
+  .carrusel img { width: 400px; height: 250px; }
 
   .chat-button-container {
-    /* se usará el JS para ajustar "right" dinámicamente.
-       Aquí dejamos un valor base para mobile si JS no corre */
-    left: 105px;
+    left: 15px;
+    right: auto;
     width: 300px;
     height: 50px;
     padding: 0 10px;
     max-width: 80%;
     justify-content: flex-start;
   }
-  .chat-text {
-    font-size: 1.2rem;
-    padding: 5px 10px;
-    max-width: calc(100vw - 120px); /* deja espacio al df-messenger */
-  }
-
-  /* Ocultar texto cuando chat está abierto (sólo con clase) */
-  .chat-button-container.oculto .chat-text {
-    display: none;
-  }
+  .chat-text { font-size: 1.2rem; padding: 5px 10px; max-width: calc(100vw - 120px); }
+  .chat-button-container.oculto .chat-text { display: none; }
 }
 
-/* Celulares muy chicos */
 @media (max-width: 480px) {
-  .banner h2 {
-    font-size: 1.5rem;
-  }
-
-  .tip {
-    flex: 1 1 100%; /* cada tip ocupa todo el ancho */
-    font-size: 0.9rem;
-  }
-
-  .carrusel img {
-    width: 300px;
-    height: 180px;
-  }
-
-  .chat-button-container {
-    width: auto;
-    height: 45px;
-    padding: 0 10px;
-    left: 105px;
-  }
-  .chat-text {
-    font-size: 1rem;
-  }
+  .banner h2 { font-size: 1.5rem; }
+  .tip { flex: 1 1 100%; font-size: 0.9rem; }
+  .carrusel img { width: 300px; height: 180px; }
+  .chat-button-container { width: auto; height: 45px; padding: 0 10px; left: 10px; }
+  .chat-text { font-size: 1rem; }
 }
