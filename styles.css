@@ -21,43 +21,6 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* ==================== FONDO ANIMADO NOTORIO ==================== */
-body {
-  position: relative;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  font-family: 'Montserrat', sans-serif;
-  /* Gradiente animado */
-  background: linear-gradient(135deg, #fef5e7, #f7d9b9, #e07b39, #b85c38);
-  background-size: 800% 800%;
-  animation: gradientMove 15s ease infinite;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Partículas visibles encima del gradiente */
-body::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.4) 3px, transparent 3px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 0;
-  animation: particlesMove 10s linear infinite;
-}
-
-@keyframes particlesMove {
-  0% { background-position: 0 0; }
-  50% { background-position: 200px 200px; }
-  100% { background-position: 0 0; }
-}
 
 /* ==================== HEADER ==================== */
 header {
@@ -297,4 +260,5 @@ df-messenger {
   background-color: #e07b39;
   transform: scale(1.05);
 }
+
 
