@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "💡 Consejos de cocina al instante",
     "🍳 Aprende recetas nuevas cada día",
     "🥗 Tips saludables y fáciles",
-    "🥘 Sorpréndete con nuevas ideas culinarias"
+    "🥘 Sorpréndete con recetas nuevas"
   ];
   let index = 0;
   const bannerText = document.getElementById("banner-text");
@@ -165,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => { igualarAlturaTips(); actualizarBotonChat(); }, 200);
 
 });
+
 
 
 
