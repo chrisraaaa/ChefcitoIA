@@ -131,4 +131,17 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('resize', () => { igualarAlturaTips(); actualizarBotonChat(); });
   setTimeout(() => { igualarAlturaTips(); actualizarBotonChat(); }, 200);
 
+  // Codigo para seleccionar el boton y poner funcion de esconder y mostrar texto de habla con chefcito
+  const shadowRootButton = document.querySelector("#df-messenger").shadowRoot.childNodes.item(5).childNodes.item(5); //Funciona de manera Estatica
+  let hideState=false;
+  shadowRootButton.onclick = () => {
+    if(hideState){
+      document.querySelector("#togglediv").style.visibility='visible';
+      hideState=false;
+    }else{
+      document.querySelector("#togglediv").style.visibility='hidden';
+      hideState=true;
+    }
+  };//Pone una Funcion en el Onclick
+
 });
