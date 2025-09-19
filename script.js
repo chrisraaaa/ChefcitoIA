@@ -73,23 +73,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatText = chatBtnContainer ? chatBtnContainer.querySelector('.chat-text') : null;
   const DEFAULT_RIGHT_DESKTOP = '97px';
   const DEFAULT_RIGHT_MOBILE = '15px';
+  const LEFT_MOBILE = '15px';
 
   function positionChatButton() {
     if (!chatBtnContainer || !dfMessenger) return;
+    const isMobile = window.innerWidth <= 768;
+
     setTimeout(() => {
       try {
         const rect = dfMessenger.getBoundingClientRect();
-        const isMobile = window.innerWidth <= 768;
-        if (rect && rect.width && rect.width > 40) {
+        if (!isMobile && rect && rect.width && rect.width > 40) {
           const gap = 18;
           chatBtnContainer.style.right = Math.round(rect.width + gap) + 'px';
+          chatBtnContainer.style.left = 'auto';
+        } else if (isMobile) {
+          chatBtnContainer.style.left = LEFT_MOBILE;
+          chatBtnContainer.style.right = 'auto';
         } else {
-          chatBtnContainer.style.right = isMobile ? DEFAULT_RIGHT_MOBILE : DEFAULT_RIGHT_DESKTOP;
+          chatBtnContainer.style.right = DEFAULT_RIGHT_DESKTOP;
+          chatBtnContainer.style.left = 'auto';
         }
       } catch {
-        chatBtnContainer.style.right = (window.innerWidth <= 768) ? DEFAULT_RIGHT_MOBILE : DEFAULT_RIGHT_DESKTOP;
+        if (isMobile) {
+          chatBtnContainer.style.left = LEFT_MOBILE;
+          chatBtnContainer.style.right = 'auto';
+        } else {
+          chatBtnContainer.style.right = DEFAULT_RIGHT_DESKTOP;
+          chatBtnContainer.style.left = 'auto';
+        }
       }
-    }, 80);
+    }, 50);
   }
 
   function actualizarBotonChat() {
@@ -97,14 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const isOpen = dfMessenger.getAttribute('chat-open') === 'true';
     const isMobile = window.innerWidth <= 768;
 
-    if (isMobile) {
-      // Móvil: ocultar/mostrar texto del botón
-      if (chatText) {
-        chatText.style.display = isOpen ? 'none' : 'block';
-      }
-    } else {
-      // PC: todo igual que antes
-      chatBtnContainer.classList.remove('oculto');
+    if (isMobile && chatText) {
+      // Móvil: ocultar texto si el chat está abierto, mostrar si está cerrado
+      chatText.style.display = isOpen ? 'none' : 'block';
+    } else if (!isMobile && chatText) {
+      chatText.style.display = 'inline-block';
     }
 
     positionChatButton();
@@ -114,14 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
     chatBtnContainer.addEventListener('click', () => {
       const isOpen = dfMessenger.getAttribute('chat-open') === 'true';
       dfMessenger.setAttribute('chat-open', isOpen ? 'false' : 'true'); // toggle
-      setTimeout(() => { actualizarBotonChat(); }, 120);
+      setTimeout(actualizarBotonChat, 100);
     });
 
-    const observer = new MutationObserver(() => { actualizarBotonChat(); });
+    // Observador de cambios en el atributo chat-open
+    const observer = new MutationObserver(actualizarBotonChat);
     observer.observe(dfMessenger, { attributes: true, attributeFilter: ['chat-open'] });
   }
 
   window.addEventListener('resize', () => { igualarAlturaTips(); actualizarBotonChat(); });
-  setTimeout(() => { igualarAlturaTips(); actualizarBotonChat(); }, 120);
+  setTimeout(() => { igualarAlturaTips(); actualizarBotonChat(); }, 200);
 
 });
