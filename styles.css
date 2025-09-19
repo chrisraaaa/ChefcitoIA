@@ -215,6 +215,16 @@ df-messenger {
   }
   .chat-text { font-size: 1.2rem; padding: 5px 10px; max-width: calc(100vw - 120px); }
   .chat-button-container.oculto .chat-text { display: none; }
+
+   /* Dejamos el botón en la esquina pero por debajo del chat cuando está abierto */
+  df-messenger[chat-open="true"] ~ .chat-button-container {
+    z-index: 1; /* menor que el df-messenger overlay */
+  }
+
+  /* Cuando el chat está cerrado, el botón está arriba normalmente */
+  df-messenger[chat-open="false"] ~ .chat-button-container {
+    z-index: 1001;
+  }
 }
 
 @media (max-width: 480px) {
