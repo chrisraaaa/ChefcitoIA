@@ -23,8 +23,9 @@ async function DealWithShadowRoot() {
     }else{
       document.querySelector("#togglediv").style.visibility='hidden';
       hideState=true;
+      document.querySelector("#df-messenger").shadowRoot.childNodes.item(5).childNodes.item(3).shadowRoot.childNodes.item(2).childNodes.item(3).shadowRoot.childNodes.item(2).style.backgroundColor = "#B85C38";
     }; //Funciona de manera Estatica
-  document.querySelector("#df-messenger").shadowRoot.childNodes.item(5).childNodes.item(3).shadowRoot.childNodes.item(2).childNodes.item(3).shadowRoot.childNodes.item(2).style.backgroundColor = "#B85C38";
+  
     
   };
   
@@ -164,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => { igualarAlturaTips(); actualizarBotonChat(); }, 200);
 
 });
+
 
 
 
