@@ -111,7 +111,7 @@ df-messenger {
 /* ==================== CHAT BOTÓN ==================== */
 .chat-button-container {
   position: fixed;
-  bottom: 30px;
+  bottom: 25px;
   right: 97px;
   display: flex;
   align-items: center;

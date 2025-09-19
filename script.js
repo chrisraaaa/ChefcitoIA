@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const DEFAULT_RIGHT_DESKTOP = '97px';
   const DEFAULT_RIGHT_MOBILE = '15px';
   const LEFT_MOBILE = '15px';
+  const MOBILE_SHIFT = 90; // distancia para mover el botón a la izquierda cuando el chat está abierto
 
   function positionChatButton() {
     if (!chatBtnContainer || !dfMessenger) return;
@@ -82,21 +83,25 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {
       try {
         const rect = dfMessenger.getBoundingClientRect();
+
         if (!isMobile && rect && rect.width && rect.width > 40) {
           const gap = 18;
           chatBtnContainer.style.right = Math.round(rect.width + gap) + 'px';
           chatBtnContainer.style.left = 'auto';
         } else if (isMobile) {
-          chatBtnContainer.style.left = LEFT_MOBILE;
+          // móvil: ajustar posición según si el chat está abierto
+          const isOpen = dfMessenger.getAttribute('chat-open') === 'true';
           chatBtnContainer.style.right = 'auto';
+          chatBtnContainer.style.left = isOpen ? MOBILE_SHIFT + 'px' : LEFT_MOBILE;
         } else {
           chatBtnContainer.style.right = DEFAULT_RIGHT_DESKTOP;
           chatBtnContainer.style.left = 'auto';
         }
       } catch {
         if (isMobile) {
-          chatBtnContainer.style.left = LEFT_MOBILE;
+          const isOpen = dfMessenger.getAttribute('chat-open') === 'true';
           chatBtnContainer.style.right = 'auto';
+          chatBtnContainer.style.left = isOpen ? MOBILE_SHIFT + 'px' : LEFT_MOBILE;
         } else {
           chatBtnContainer.style.right = DEFAULT_RIGHT_DESKTOP;
           chatBtnContainer.style.left = 'auto';
@@ -111,8 +116,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const isMobile = window.innerWidth <= 768;
 
     if (isMobile && chatText) {
-      // Móvil: ocultar texto si el chat está abierto, mostrar si está cerrado
-      chatText.style.display = isOpen ? 'none' : 'block';
+      // mantenemos texto visible, solo movemos el botón
+      chatText.style.display = 'block';
     } else if (!isMobile && chatText) {
       chatText.style.display = 'inline-block';
     }
@@ -127,7 +132,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(actualizarBotonChat, 100);
     });
 
-    // Observador de cambios en el atributo chat-open
     const observer = new MutationObserver(actualizarBotonChat);
     observer.observe(dfMessenger, { attributes: true, attributeFilter: ['chat-open'] });
   }
