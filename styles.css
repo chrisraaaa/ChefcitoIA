@@ -111,7 +111,7 @@ df-messenger {
 /* ==================== CHAT BOTÓN ==================== */
 .chat-button-container {
   position: fixed;
-  bottom: 20px;
+  bottom: 30px;
   right: 97px;
   display: flex;
   align-items: center;
@@ -204,7 +204,8 @@ df-messenger {
   .carrusel img { width: 400px; height: 250px; }
 
   .chat-button-container {
-    left: 25px;
+    bottom: 30px;
+    left: 55px;
     right: auto;
     width: 250px;
     height: 50px;
@@ -220,6 +221,6 @@ df-messenger {
   .banner h2 { font-size: 1.5rem; }
   .tip { flex: 1 1 100%; font-size: 0.9rem; }
   .carrusel img { width: 300px; height: 180px; }
-  .chat-button-container { width: auto; height: 45px; padding: 0 10px; left: 10px; }
+  .chat-button-container { width: auto; height: 45px; padding: 0 10px; left: 50px; }
   .chat-text { font-size: 1rem; }
 }
