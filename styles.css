@@ -204,9 +204,9 @@ df-messenger {
   .carrusel img { width: 400px; height: 250px; }
 
   .chat-button-container {
-    left: 15px;
+    left: 25px;
     right: auto;
-    width: 300px;
+    width: 250px;
     height: 50px;
     padding: 0 10px;
     max-width: 80%;

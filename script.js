@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==================== CHAT BOTÓN ==================== */
   const chatBtnContainer = document.querySelector('.chat-button-container');
   const dfMessenger = document.querySelector('df-messenger');
+  const chatText = chatBtnContainer ? chatBtnContainer.querySelector('.chat-text') : null;
   const DEFAULT_RIGHT_DESKTOP = '97px';
   const DEFAULT_RIGHT_MOBILE = '15px';
 
@@ -81,8 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const isMobile = window.innerWidth <= 768;
         if (rect && rect.width && rect.width > 40) {
           const gap = 18;
-          const desiredRight = Math.round(rect.width + gap);
-          chatBtnContainer.style.right = desiredRight + 'px';
+          chatBtnContainer.style.right = Math.round(rect.width + gap) + 'px';
         } else {
           chatBtnContainer.style.right = isMobile ? DEFAULT_RIGHT_MOBILE : DEFAULT_RIGHT_DESKTOP;
         }
@@ -98,8 +98,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const isMobile = window.innerWidth <= 768;
 
     if (isMobile) {
-      chatBtnContainer.classList.toggle('oculto', isOpen);
+      // Móvil: ocultar/mostrar texto del botón
+      if (chatText) {
+        chatText.style.display = isOpen ? 'none' : 'block';
+      }
     } else {
+      // PC: todo igual que antes
       chatBtnContainer.classList.remove('oculto');
     }
 
@@ -108,7 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (chatBtnContainer && dfMessenger) {
     chatBtnContainer.addEventListener('click', () => {
-      dfMessenger.setAttribute('chat-open', 'true');
+      const isOpen = dfMessenger.getAttribute('chat-open') === 'true';
+      dfMessenger.setAttribute('chat-open', isOpen ? 'false' : 'true'); // toggle
       setTimeout(() => { actualizarBotonChat(); }, 120);
     });
 
