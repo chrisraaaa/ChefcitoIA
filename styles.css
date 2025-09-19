@@ -225,6 +225,10 @@ df-messenger {
   df-messenger[chat-open="false"] ~ .chat-button-container {
     z-index: 1001;
   }
+ .manual {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -233,4 +237,25 @@ df-messenger {
   .carrusel img { width: 300px; height: 180px; }
   .chat-button-container { width: auto; height: 45px; padding: 0 10px; left: 50px; }
   .chat-text { font-size: 1rem; }
+.manual {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* ==================== BOTÓN PDF MANUAL ==================== */
+.manual {
+  margin-left: auto; /* empuja el enlace al extremo derecho */
+  text-decoration: none;
+  background-color: #b85c38;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.manual:hover {
+  background-color: #e07b39;
+  transform: scale(1.05);
 }
