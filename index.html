@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chefcito Portal</title>
+
+    <!-- Fuente -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Dialogflow -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <img
+        class="Logo"
+        src="https://subir-imagen.com/images/2025/09/11/Chefcitof822fb499de8376b.png"
+        alt="Logo"
+      />
+      <h1>Chefcito</h1>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+      <h2 id="banner-text">Bienvenido a Chefcito 🤖</h2>
+    </section>
+
+    <!-- Tips rotativos -->
+    <section class="sobre" id="sobre"></section>
+
+    <!-- Carrusel de imágenes -->
+    <section class="carrusel">
+      <div class="carrusel-track">
+        <img
+          src="https://a.cdn-hotels.com/gdcs/production193/d478/700aa7c7-efa1-4b9d-8d55-3668cf5b520b.jpg"
+          alt="Comida1"
+        />
+        <img
+          src="https://th.bing.com/th/id/R.b599312f95ef064e10588a4c47b9117d?rik=X0bIif4SLzW1fQ&riu=http%3a%2f%2fwww.recreoviral.com%2fwp-content%2fuploads%2f2016%2f02%2fComida-que-s%C3%B3lo-un-verdadero-mexicano-entender%C3%A1-22.jpg&ehk=atMZGBGSwm0vueW9Lo0OGzmsyRnjkQeKM2VP8Ii8JjI%3d&risl=&pid=ImgRaw&r=0"
+          alt="Comida2"
+        />
+        <img
+          src="https://www.dzoom.org.es/wp-content/uploads/2019/04/fotografia-de-comida-platos7-810x540.jpg"
+          alt="Comida3"
+        />
+        <img
+          src="https://s1.1zoom.me/b5252/63/Roast_Chicken_French_fries_Vegetables_Plate_518389_3840x2400.jpg"
+          alt="Comida4"
+        />
+        <img
+          src="https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?cs=srgb&dl=appetizer-bowl-delicious-1640772.jpg&fm=jpg"
+          alt="Comida5"
+        />
+      </div>
+    </section>
+
+    <!-- Chat messenger -->
+    <df-messenger
+      id="df-messenger"
+      chat-icon="https://subir-imagen.com/images/2025/09/11/Chefcitof822fb499de8376b.png"
+      chat-title="Chefcito"
+      agent-id="bbc9ae25-f534-4343-90d6-b3bf88cb1186"
+      language-code="es"
+      chat-open="false"
+      chat-titlebar-color="#b85c38"
+    ></df-messenger>
+
+    <!-- Botón personalizado + label -->
+    <div class="chat-button-container">
+      <span class="chat-text">🤖 Chatea con Chefcito →</span>
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
