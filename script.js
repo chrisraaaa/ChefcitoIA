@@ -70,10 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==================== CHAT BOTÓN ==================== */
   const chatBtnContainer = document.querySelector('.chat-button-container');
   const dfMessenger = document.querySelector('df-messenger');
-  const chatText = chatBtnContainer ? chatBtnContainer.querySelector('.chat-text') : null;
   const DEFAULT_RIGHT_DESKTOP = '97px';
   const DEFAULT_RIGHT_MOBILE = '15px';
-  const LEFT_MOBILE = '15px'; // nuevo: margen izquierdo en móvil
 
   function positionChatButton() {
     if (!chatBtnContainer || !dfMessenger) return;
@@ -85,14 +83,11 @@ document.addEventListener("DOMContentLoaded", () => {
           const gap = 18;
           const desiredRight = Math.round(rect.width + gap);
           chatBtnContainer.style.right = desiredRight + 'px';
-          if (isMobile) chatBtnContainer.style.left = LEFT_MOBILE;
         } else {
           chatBtnContainer.style.right = isMobile ? DEFAULT_RIGHT_MOBILE : DEFAULT_RIGHT_DESKTOP;
-          if (isMobile) chatBtnContainer.style.left = LEFT_MOBILE;
         }
       } catch {
         chatBtnContainer.style.right = (window.innerWidth <= 768) ? DEFAULT_RIGHT_MOBILE : DEFAULT_RIGHT_DESKTOP;
-        if (window.innerWidth <= 768) chatBtnContainer.style.left = LEFT_MOBILE;
       }
     }, 80);
   }
@@ -102,8 +97,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const isOpen = dfMessenger.getAttribute('chat-open') === 'true';
     const isMobile = window.innerWidth <= 768;
 
-    if (isMobile && chatText) {
-      chatText.style.display = isOpen ? 'none' : 'inline-block';
+    if (isMobile) {
+      chatBtnContainer.classList.toggle('oculto', isOpen);
     } else {
       chatBtnContainer.classList.remove('oculto');
     }
@@ -113,8 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (chatBtnContainer && dfMessenger) {
     chatBtnContainer.addEventListener('click', () => {
-      const isOpen = dfMessenger.getAttribute('chat-open') === 'true';
-      dfMessenger.setAttribute('chat-open', isOpen ? 'false' : 'true'); // toggle
+      dfMessenger.setAttribute('chat-open', 'true');
       setTimeout(() => { actualizarBotonChat(); }, 120);
     });
 

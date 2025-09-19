@@ -177,26 +177,44 @@ df-messenger {
 }
 
 @media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    padding: 1rem;
+    gap: 10px;
+  }
+  header img { height: 50px; }
+  header h1 { font-size: 1.8rem; }
+
+  .banner h2 { font-size: 2rem; padding: 0 1rem; }
+
+  .sobre {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 15px;
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    height: auto;
+  }
+  .tip { flex: 1 1 45%; min-width: 140px; height: auto !important; font-size: 1rem; padding: 0.8rem; }
+
+  .carrusel img { width: 400px; height: 250px; }
+
   .chat-button-container {
-    left: 4%;       /* más a la izquierda */
-    right: auto;      /* ya no se pega a la derecha */
-    width: 250px;
+    left: 15px;
+    right: auto;
+    width: 300px;
     height: 50px;
     padding: 0 10px;
     max-width: 80%;
     justify-content: flex-start;
   }
-  .chat-text {
-    font-size: 1.2rem;
-    padding: 5px 10px;
-    max-width: calc(100vw - 70px); /* deja espacio para la bolita */
-    display: inline-block; /* siempre visible a menos que agreguemos clase */
-  }
-  .chat-button-container.oculto .chat-text {
-    display: none;
-  }
+  .chat-text { font-size: 1.2rem; padding: 5px 10px; max-width: calc(100vw - 120px); }
+  .chat-button-container.oculto .chat-text { display: none; }
 }
-
 
 @media (max-width: 480px) {
   .banner h2 { font-size: 1.5rem; }
