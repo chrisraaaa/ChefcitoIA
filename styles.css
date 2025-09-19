@@ -178,9 +178,9 @@ df-messenger {
 
 @media (max-width: 768px) {
   .chat-button-container {
-    left: 15px;       /* más a la izquierda */
+    left: 4%;       /* más a la izquierda */
     right: auto;      /* ya no se pega a la derecha */
-    width: 300px;
+    width: 250px;
     height: 50px;
     padding: 0 10px;
     max-width: 80%;
